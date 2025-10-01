@@ -1,6 +1,8 @@
 <lccdd>
 	<define>
 
+        <constant name="InnerTracker_Barrel_DoubleLayer_Gap" value="2.0*cm"/>
+
 		<constant name="InnerTracker_Barrel_radius_0" value="127*mm"/>
 		<constant name="InnerTracker_Barrel_radius_1" value="340*mm"/>
 		<constant name="InnerTracker_Barrel_radius_2" value="554*mm"/>
@@ -56,8 +58,8 @@
 
 
 	<display>
-		<vis name="InnerTrackerModuleBarrelVis" alpha="0.5" r="0.0"   g="1.0"  b="0.6"  showDaughters="false" visible="true"/>
-		<vis name="InnerTrackerEndcapVis"       alpha="0.5" r="0.0"   g="1.0"  b="0.6"  showDaughters="false" visible="true"/>
+		<vis name="InnerTrackerModuleBarrelVis" alpha="0.5" r="0.0"   g="1.0"  b="0.6"  showDaughters="true" visible="true"/>
+		<vis name="InnerTrackerEndcapVis"       alpha="0.5" r="0.0"   g="1.0"  b="0.6"  showDaughters="true" visible="true"/>
 		<vis name="InterlinkVis"                alpha="1.0" r="0.078" g="0.12" b="0.59" showDaughters="true"  visible="true"/>
 	</display>
 
@@ -87,21 +89,29 @@
 			</module>
 
 			<layer module="InnerTrackerBarrelModule_01" id="0" type="1" >
-				<rphi_layout phi_tilt="0*deg" nphi="14*2" phi0="0" rc="InnerTracker_Barrel_radius_0" dr="2.5*mm"/>
+				<rphi_layout phi_tilt="0*deg" nphi="16*2" phi0="0" rc="InnerTracker_Barrel_radius_0" dr="2.5*mm"/>
 				<z_layout dr="0" z0="InnerTracker_Barrel_half_length_0 - 15.05*mm" nz="32"/>
 			</layer>
-			<layer module="InnerTrackerBarrelModule_01" id="1" >
+
+			<!-- <layer module="InnerTrackerBarrelModule_01" id="1" >
+				<rphi_layout phi_tilt="0*deg" nphi="16*2" phi0="0" rc="InnerTracker_Barrel_radius_0 + InnerTracker_Barrel_DoubleLayer_Gap" dr="2.5*mm"/>
+				<z_layout dr="0" z0="InnerTracker_Barrel_half_length_0 - 15.05*mm" nz="32"/>
+			</layer> -->
+
+			<layer module="InnerTrackerBarrelModule_01" id="2" >
 				<rphi_layout phi_tilt="0*deg" nphi="38*2" phi0="0" rc="InnerTracker_Barrel_radius_1" dr="2.5*mm"/>
 				<z_layout dr="0" z0="InnerTracker_Barrel_half_length_1 - 15.05*mm" nz="32"/>
 			</layer>
-			<layer module="InnerTrackerBarrelModule_01" id="2" >
+
+			<layer module="InnerTrackerBarrelModule_01" id="3" >
 				<rphi_layout phi_tilt="0*deg" nphi="62*2" phi0="0" rc="InnerTracker_Barrel_radius_2" dr="2.5*mm"/>
 				<z_layout dr="0" z0="InnerTracker_Barrel_half_length_2 - 15.05*mm" nz="46"/>
 			</layer>
+
 		</detector>
 
 
-		<detector id="DetID_IT_Endcap" name="InnerTrackerEndcap" type="TrackerEndcap_o2_v06" readout="InnerTrackerEndcapCollection" reflect="true" region="InnerTrackerEndcapRegion">
+		<!-- <detector id="DetID_IT_Endcap" name="InnerTrackerEndcap" type="TrackerEndcap_o2_v06" readout="InnerTrackerEndcapCollection" reflect="true" region="InnerTrackerEndcapRegion">
 			<envelope vis="ITVis">
 				<shape type="Assembly"/>
 			</envelope>
@@ -331,114 +341,12 @@
 				<ring r="InnerTracker_Endcap_radius_6+2*ITM"  zstart="InnerTracker_Endcap_z_6" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_7x7_Out"  phi0="0"/>
 				<ring r="InnerTracker_Endcap_radius_6+9*ITM"  zstart="InnerTracker_Endcap_z_6" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_9x9_Out"  phi0="0"/>
 			</layer>
-		</detector>
+		</detector> -->
 
 
-		<detector name="InnerTrackerBarrelSupport" type="TrackerBarrelSupport_o1_v01" id="0"  reflect="true" region="InnerTrackerBarrelRegion">
-			<envelope>
-				<shape type="Assembly"/>
-			</envelope>
-			<layer id="1" inner_r="InnerTracker_Barrel_radius_0+0.5*cm" outer_z="InnerTracker_Barrel_half_length_0" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="0.17/3.5959*cm" />
-			</layer>
-			<layer id="2" inner_r="InnerTracker_Barrel_radius_1+0.5*cm" outer_z="InnerTracker_Barrel_half_length_1" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="0.17/3.5959*cm" />
-			</layer>
-			<layer id="3" inner_r="InnerTracker_Barrel_radius_2+0.5*cm" outer_z="InnerTracker_Barrel_half_length_2" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="0.17/3.5959*cm" />
-			</layer>
-			<layer id="4" inner_r="InnerTracker_outer_radius-1*cm" outer_z="InnerTracker_half_length" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="1.25/3.5959*cm" />
-			</layer>
-			<comment>3.5959*cm = X0 for Carbon fibre</comment>
-		</detector>
 
 
-		<detector name="InnerTrackerEndcapSupport" type="TrackerEndcapSupport_o1_v02" reflect="true" region="InnerTrackerEndcapRegion">
-			<envelope>
-				<shape type="Assembly"/>
-			</envelope>
-			<layer id="0" inner_r="InnerTracker_Endcap_radius_0" inner_z="InnerTracker_Endcap_z_0-1*cm" outer_r="405*mm" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="0.330/3.5959*cm" />
-			</layer>
-			<layer id="1" inner_r="InnerTracker_Endcap_radius_1" inner_z="InnerTracker_Endcap_z_1+1*cm" outer_r="555*mm" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="0.308/3.5959*cm" />
-			</layer>
-			<layer id="2" inner_r="InnerTracker_Endcap_radius_2" inner_z="InnerTracker_Endcap_z_2-1*cm" outer_r="555*mm" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="0.308/3.5959*cm" />
-			</layer>
-			<layer id="3" inner_r="InnerTracker_Endcap_radius_3+10*env_safety" inner_z="InnerTracker_Endcap_z_3+1*cm" outer_r="555*mm" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="0.343/3.5959*cm" />
-			</layer>
-			<layer id="4" inner_r="InnerTracker_Endcap_radius_4" inner_z="InnerTracker_Endcap_z_4-1*cm" outer_r="555*mm" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="0.343/3.5959*cm" />
-			</layer>
-			<layer id="5" inner_r="InnerTracker_Endcap_radius_5+10*env_safety" inner_z="InnerTracker_Endcap_z_5+1*cm" outer_r="555*mm" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="0.369/3.5959*cm" />
-			</layer>
-			<layer id="6" inner_r="InnerTracker_Endcap_radius_6" inner_z="InnerTracker_Endcap_z_6-1*cm" outer_r="555*mm" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="0.369/3.5959*cm" />
-			</layer>
-			<layer id="7" inner_r="InnerTracker_Barrel_radius_2-2*cm+0.6/3.5959*cm" inner_z="InnerTracker_Barrel_half_length_2+2*cm" outer_r="InnerTracker_outer_radius-1*cm" vis="InterlinkVis">
-				<slice material="CarbonFiber" thickness="0.6/3.5959*cm" />
-			</layer>
 
-			<!-- the material between inner tracker barrel and inner tracker endcaps -->
-			<layer id="8" inner_r="InnerTracker_Barrel_radius_0" inner_z="InnerTracker_Barrel_half_length_1+2*cm" outer_r="InnerTracker_Barrel_radius_1" vis="InterlinkVis">
-				<slice material="CarbonFiber" thickness="0.6/3.5959*cm" />
-			</layer>
-			<layer id="9" inner_r="InnerTracker_Barrel_radius_1" inner_z="InnerTracker_Barrel_half_length_1+2*cm" outer_r="InnerTracker_Barrel_radius_2-2*cm" vis="InterlinkVis">
-				<slice material="CarbonFiber" thickness="0.6/3.5959*cm" />
-			</layer>
-		</detector>
-
-
-		<detector name="InnerTrackerInterlink" type="TubeSupport_o1_v01" reflect="true" region="InnerTrackerEndcapRegion">
-			<envelope>
-				<shape type="Assembly"/>
-			</envelope>
-			<section start="InnerTracker_Barrel_half_length_1+2*cm"  end="InnerTracker_Barrel_half_length_2+2*cm"        rMin="InnerTracker_Barrel_radius_2-2*cm"  rMax="InnerTracker_Barrel_radius_2-2*cm+0.6/3.5959*cm"  material="CarbonFiber" name="InterlinkTube" vis="InterlinkVis"/>
-		</detector>
-
-		<detector name="InnerTrackerVertexCable" type="TubeSupport_o1_v01" reflect="true" region="BeampipeRegion">
-			<envelope>
-				<shape type="Assembly"/>
-			</envelope>
-			<section start="VertexBarrel_zmax" end="495*mm" rMin="Vertex_outer_radius+0.5*mm" rMax="Vertex_outer_radius+0.5*mm+0.067*mm" material="Copper" name="VertexCableTube" vis="SiVertexCableVis"/>
-		</detector>
-
-
-		<detector name="BeampipeShell" type="ConicalSupport_o1_v01" reflect="true" region="BeampipeRegion">
-			<envelope>
-				<shape type="Assembly"/>
-			</envelope>
-			<section start="500*mm"  end="Nozzle_kink_z"        rMin1="BeampipeShellR1+VertexCoolingGap"  rMin2="BeampipeShellR2+VertexCoolingGap" rMax1="BeampipeShellR1+VertexCoolingGap+VertexCoolingShellThickness"          rMax2="BeampipeShellR2+VertexCoolingGap+VertexCoolingShellThickness" material="CarbonFiber" name="ConeSupport1" vis="SupportVis"/>
-			<section start="Nozzle_kink_z" end="InnerTracker_half_length" rMin1="BeampipeShellR2+VertexCoolingGap" rMin2="BeampipeShellR3+VertexCoolingGap" rMax1="BeampipeShellR2+VertexCoolingGap+VertexCoolingShellThickness" rMax2="BeampipeShellR3+VertexCoolingGap+VertexCoolingShellThickness" material="CarbonFiber" name="ConeSupport2" vis="SupportVis"/>
-		</detector>
-
-
-		<detector name="BeampipeShell2" type="TrackerEndcapSupport_o1_v02" reflect="true" region="BeampipeRegion">
-			<envelope>
-				<shape type="Assembly"/>
-			</envelope>
-			<layer id="0" inner_r="BeampipeShellR1+VertexCoolingGap" inner_z="500*mm-2*VertexCoolingShellThickness" outer_r="Vertex_outer_radius+0.1*mm" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="VertexCoolingShellThickness" />
-			</layer>
-			<comment> The next section is the cable for the vertex </comment>
-			<layer id="1" inner_r="BeampipeShellR1+VertexCoolingGap" inner_z="495*mm" outer_r="Vertex_outer_radius" vis="SiVertexCableVis">
-				<slice material="Copper" thickness="0.067*mm" />
-			</layer>
-		</detector>
-
-
-		<detector name="BeampipeShell3" type="TrackerBarrelSupport_o1_v01" id="0"  reflect="true" region="BeampipeRegion">
-			<envelope>
-				<shape type="Assembly"/>
-			</envelope>
-			<layer id="4" inner_r="Vertex_outer_radius+0.1*cm" outer_z="500*mm" vis="SupportVis">
-				<slice material="CarbonFiber" thickness="VertexCoolingShellThickness" />
-			</layer>
-		</detector>
 
 	</detectors>
 
@@ -450,13 +358,13 @@
 			<argument value="v_y=1."/>
 			<argument value="n_z=1."/>
 		</plugin>
-		<plugin name="DD4hep_GenericSurfaceInstallerPlugin">
+		<!-- <plugin name="DD4hep_GenericSurfaceInstallerPlugin">
 			<argument value="InnerTrackerEndcap"/>
 			<argument value="dimension=2"/>
 			<argument value="u_x=1."/>
 			<argument value="v_y=1."/>
 			<argument value="n_z=1."/>
-		</plugin>
+		</plugin> -->
 	</plugins>
 
 </lccdd>
