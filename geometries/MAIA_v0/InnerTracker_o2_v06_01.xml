@@ -2,14 +2,17 @@
 	<define>
 
         <constant name="InnerTracker_Barrel_DoubleLayer_Gap" value="2.0*mm"/>
+        <constant name="InnerTracker_Barrel_DoubleLayer_Pair_Gap" value="4.0*cm"/>
 
 		<constant name="InnerTracker_Barrel_radius_0" value="127*mm"/>
-		<constant name="InnerTracker_Barrel_radius_1" value="340*mm"/>
+		<constant name="InnerTracker_Barrel_radius_1" value="InnerTracker_Barrel_radius_0 + InnerTracker_Barrel_DoubleLayer_Pair_Gap"/>
 		<constant name="InnerTracker_Barrel_radius_2" value="554*mm"/>
+		<constant name="InnerTracker_Barrel_radius_3" value="554*mm"/>
 
 		<constant name="InnerTracker_Barrel_half_length_0" value="481.6*mm"/>
 		<constant name="InnerTracker_Barrel_half_length_1" value="481.6*mm"/>
 		<constant name="InnerTracker_Barrel_half_length_2" value="692.3*mm"/>
+		<constant name="InnerTracker_Barrel_half_length_3" value="692.3*mm"/>
 
 		<constant name="InnerTracker_Endcap_z_0" value="524*mm"/>
 		<constant name="InnerTracker_Endcap_z_1" value="808*mm"/>
@@ -88,7 +91,7 @@
 				<include ref="InnerTrackerBarrelModuleDown.xml"/>
 			</module>
 
-			<!-- <layer module="InnerTrackerBarrelModule_01" id="0" type="1" >
+			<layer module="InnerTrackerBarrelModule_01" id="0" type="1" >
 				<rphi_layout phi_tilt="0*deg" nphi="15*2" phi0="0" rc="InnerTracker_Barrel_radius_0" dr="4.0*mm"/>
 				<z_layout dr="0" z0="InnerTracker_Barrel_half_length_0 - 15.05*mm" nz="32"/>
 			</layer>
@@ -96,32 +99,32 @@
 			<layer module="InnerTrackerBarrelModule_01" id="1" >
 				<rphi_layout phi_tilt="0*deg" nphi="15*2" phi0="0" rc="InnerTracker_Barrel_radius_0 + InnerTracker_Barrel_DoubleLayer_Gap" dr="4.0*mm"/>
 				<z_layout dr="0" z0="InnerTracker_Barrel_half_length_0 - 15.05*mm" nz="32"/>
-			</layer> -->
+			</layer>
 
-			<!-- <layer module="InnerTrackerBarrelModule_01" id="2" >
-				<rphi_layout phi_tilt="0*deg" nphi="38*2" phi0="0" rc="InnerTracker_Barrel_radius_1" dr="4.0*mm"/>
+			<layer module="InnerTrackerBarrelModule_01" id="2" >
+				<rphi_layout phi_tilt="0*deg" nphi="20*2" phi0="0" rc="InnerTracker_Barrel_radius_1" dr="4.0*mm"/>
 				<z_layout dr="0" z0="InnerTracker_Barrel_half_length_1 - 15.05*mm" nz="32"/>
 			</layer>
 
 			<layer module="InnerTrackerBarrelModule_01" id="3" >
-				<rphi_layout phi_tilt="0*deg" nphi="38*2" phi0="0" rc="InnerTracker_Barrel_radius_1 + InnerTracker_Barrel_DoubleLayer_Gap" dr="4.0*mm"/>
+				<rphi_layout phi_tilt="0*deg" nphi="20*2" phi0="0" rc="InnerTracker_Barrel_radius_1 + InnerTracker_Barrel_DoubleLayer_Gap" dr="4.0*mm"/>
 				<z_layout dr="0" z0="InnerTracker_Barrel_half_length_1 - 15.05*mm" nz="32"/>
-			</layer> -->
+			</layer>
 
-			<layer module="InnerTrackerBarrelModule_01" id="4" >
+			<!-- <layer module="InnerTrackerBarrelModule_01" id="4" >
 				<rphi_layout phi_tilt="0*deg" nphi="62*2" phi0="0" rc="InnerTracker_Barrel_radius_2 - InnerTracker_Barrel_DoubleLayer_Gap" dr="4.0*mm"/>
 				<z_layout dr="0" z0="InnerTracker_Barrel_half_length_2 - 15.05*mm" nz="46"/>
-			</layer>
+			</layer> -->
 
-			<layer module="InnerTrackerBarrelModule_01" id="5" >
+			<!-- <layer module="InnerTrackerBarrelModule_01" id="5" >
 				<rphi_layout phi_tilt="0*deg" nphi="62*2" phi0="0" rc="InnerTracker_Barrel_radius_2" dr="4.0*mm"/>
 				<z_layout dr="0" z0="InnerTracker_Barrel_half_length_2 - 15.05*mm" nz="46"/>
-			</layer>
+			</layer> -->
 
 		</detector>
 
 
-		<!-- <detector id="DetID_IT_Endcap" name="InnerTrackerEndcap" type="TrackerEndcap_o2_v06" readout="InnerTrackerEndcapCollection" reflect="true" region="InnerTrackerEndcapRegion">
+		<detector id="DetID_IT_Endcap" name="InnerTrackerEndcap" type="TrackerEndcap_o2_v06" readout="InnerTrackerEndcapCollection" reflect="true" region="InnerTrackerEndcapRegion">
 			<envelope vis="ITVis">
 				<shape type="Assembly"/>
 			</envelope>
@@ -309,7 +312,7 @@
 			</module>
 
 
-			<layer id="0">
+			<!-- <layer id="0">
 				<ring r="InnerTracker_Endcap_radius_0"        zstart="InnerTracker_Endcap_z_0" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_2x2_Out" phi0="0"/>
 				<ring r="InnerTracker_Endcap_radius_0+2*ITM"  zstart="InnerTracker_Endcap_z_0" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_3x4_Out" phi0="0"/>
 				<ring r="InnerTracker_Endcap_radius_0+6*ITM"  zstart="InnerTracker_Endcap_z_0" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_5x8_Out" phi0="0"/>
@@ -320,9 +323,9 @@
 				<ring r="InnerTracker_Endcap_radius_1+4*ITM"  zstart="InnerTracker_Endcap_z_1" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_5x7_In"  phi0="0"/>
 				<ring r="InnerTracker_Endcap_radius_1+11*ITM" zstart="InnerTracker_Endcap_z_1" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_7x8_In"  phi0="0"/>
 				<ring r="InnerTracker_Endcap_radius_1+19*ITM" zstart="InnerTracker_Endcap_z_1" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_9x8_In"  phi0="0"/>
-			</layer>
+			</layer> -->
 
-			<layer id="2">
+			<!-- <layer id="2">
 				<ring r="InnerTracker_Endcap_radius_2"        zstart="InnerTracker_Endcap_z_2" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_5x7_Out"  phi0="0"/>
 				<ring r="InnerTracker_Endcap_radius_2+7*ITM"  zstart="InnerTracker_Endcap_z_2" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_7x9_Out"  phi0="0"/>
 				<ring r="InnerTracker_Endcap_radius_2+16*ITM" zstart="InnerTracker_Endcap_z_2" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_9x8_Out"  phi0="0"/>
@@ -350,8 +353,9 @@
 				<ring r="InnerTracker_Endcap_radius_6"        zstart="InnerTracker_Endcap_z_6" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_5x2_Out"  phi0="0"/>
 				<ring r="InnerTracker_Endcap_radius_6+2*ITM"  zstart="InnerTracker_Endcap_z_6" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_7x7_Out"  phi0="0"/>
 				<ring r="InnerTracker_Endcap_radius_6+9*ITM"  zstart="InnerTracker_Endcap_z_6" nmodules="26" dz="3*mm" module="InnerTrackerEndcapModule_9x9_Out"  phi0="0"/>
-			</layer>
-		</detector> -->
+			</layer> -->
+
+		</detector>
 
 
 
