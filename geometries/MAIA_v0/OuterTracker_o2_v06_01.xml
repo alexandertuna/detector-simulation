@@ -165,10 +165,10 @@
 				<shape type="Assembly"/>
 			</envelope>
 
-			<layer id="0" inner_r="OuterTracker_Barrel_radius_0+20*cm" outer_z="OuterTracker_Barrel_half_length" vis="SupportVis">
+			<layer id="0" inner_r="OuterTracker_Barrel_radius_0+4*cm" outer_z="OuterTracker_Barrel_half_length" vis="SupportVis">
 				<slice material="CarbonFiber" thickness="0.26/3.5959*cm" />
 			</layer>
-			<layer id="1" inner_r="OuterTracker_Barrel_radius_0-20*cm" outer_z="OuterTracker_Barrel_half_length" vis="SupportVis">
+			<layer id="1" inner_r="OuterTracker_Barrel_radius_0-1*cm" outer_z="OuterTracker_Barrel_half_length" vis="SupportVis">
 				<slice material="CarbonFiber" thickness="0.26/3.5959*cm" />
 			</layer>
 
